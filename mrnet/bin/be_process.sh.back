@@ -1,0 +1,15 @@
+#!/bin/sh
+PARENT_PORT=$1
+PARENT_RANK=$2
+BE_RANK=$3
+APP_PARAM=$4
+echo "init BE process... [PARENT_PORT: $PARENT_PORT] [PARENT_RANK: $PARENT_RANK] [BE_RANK: $BE_RANK] [PARAM: $APP_PARAM]  "
+
+export LD_LIBRARY_PATH=/usr/local/lib:/home/usw/Install/sight/sight/sight/mrnet/bin
+
+unset SIGHT_FILE_OUT
+export MRNET_MERGE_EXEC="./smrnet_be localhost $PARENT_PORT $PARENT_RANK localhost $BE_RANK";
+
+#execute sight programme
+./4.AttributeAnnotationFiltering $APP_PARAM 2
+

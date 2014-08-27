@@ -27,7 +27,7 @@ namespace mrnmergeing{
         MRN::Network *net;
 
     public:
-        MRNetMergeState(const vector<baseStructureParser*>& parsers, MRN::Stream* strm, MRN::Network* net, int strm_id, int tag_id
+        MRNetMergeState(const vector<baseStructureParser<FILE>*>& parsers, MRN::Stream* strm, MRN::Network* net, int strm_id, int tag_id
 #ifdef VERBOSE
                 , graph& g, anchor incomingA, anchor outgoingA
 #endif

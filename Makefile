@@ -18,10 +18,10 @@ SIGHT_CFLAGS = -g -fPIC -I${ROOT_PATH} -I${ROOT_PATH}/attributes -I${ROOT_PATH}/
                 -I${ROOT_PATH}/widgets/papi/include \
                 -I${ROOT_PATH}/widgets/libmsr/include \
                 -I${ROOT_PATH}/mrnet \
-		-I/home/usw/Install/MRnet/mrnet_4.1.0/include  \
-		-I/home/usw/Install/MRnet/mrnet_4.1.0/xplat/include \
-		-I/home/usw/Install/MRnet/mrnet_4.1.0/build/x86_64-unknown-linux-gnu \
-		-I/home/usw/Install/MRnet/mrnet_4.1.0/external/boost/include \
+		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/include  \
+		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/xplat/include \
+		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/build/x86_64-unknown-linux-gnu \
+		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/external/boost/include \
                 -I${ROOT_PATH}/mrnet 
 
 SIGHT_LINKFLAGS = \
@@ -32,18 +32,17 @@ SIGHT_LINKFLAGS = \
                   -Wl,-rpath ${ROOT_PATH}/tools/adept-utils/lib \
                   ${ROOT_PATH}/tools/callpath/src/src/libcallpath.so \
                   -Wl,-rpath ${ROOT_PATH}/tools/callpath/src/src \
-                  ${ROOT_PATH}/widgets/papi/lib/libpapi.a \
                   ${ROOT_PATH}/widgets/gsl/lib/libgsl.so \
                   ${ROOT_PATH}/widgets/gsl/lib/libgslcblas.so \
                   -Wl,-rpath ${ROOT_PATH}/widgets/gsl/lib \
-	          -lpthread
+	          -lpthread -lpapi
 
 
-MRNET_CXXFLAGS = -g -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -fno-default-inline \
-		-I/home/usw/Install/MRnet/mrnet_4.1.0/include \
-		-I/home/usw/Install/MRnet/mrnet_4.1.0/xplat/include \
-		-I/home/usw/Install/MRnet/mrnet_4.1.0/build/x86_64-unknown-linux-gnu \
-		-I/home/usw/Install/MRnet/mrnet_4.1.0/external/boost/include \
+MRNET_CXXFLAGS = -g -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS  \
+		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/include \
+		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/xplat/include \
+		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/build/x86_64-unknown-linux-gnu \
+		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/external/boost/include \
                 -I${ROOT_PATH}/mrnet \
                     -Dos_linux \
                     -Wall -Wno-system-headers -Wfloat-equal -Wconversion -Wshadow -Wpointer-arith \
@@ -53,7 +52,7 @@ LDFLAGS = -Wl,-E
 
 MRNET_SOFLAGS = -fPIC -shared -rdynamic
 
-MRNET_LIBS = -L/home/usw/Install/MRnet/mrnet_4.1.0/build/x86_64-unknown-linux-gnu/lib -lmrnet -lxplat -lm -lpthread -ldl
+MRNET_LIBS = -L/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/build/x86_64-unknown-linux-gnu/lib -lmrnet -lxplat -lm -lpthread -ldl
 
 RAPL_ENABLED = 1
 ifeq (${RAPL_ENABLED}, 1)
@@ -111,7 +110,7 @@ VNC_ENABLED := 0
 endif
 
 # By default we disable KULFI-based fault injection since it requires LLVM
-KULFI_ENABLED := 1
+KULFI_ENABLED := 0
 	
 ifeq (${KULFI_ENABLED}, 1)
 # Sight must use the same LLVM Clang compiler as KULFI does

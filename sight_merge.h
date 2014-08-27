@@ -1,3 +1,4 @@
+#pragma once
 #include <stdlib.h>
 #include <stdio.h>
 #include <map>
@@ -117,7 +118,7 @@ class MergeState {
   
   public:
   // The parser objects from which we can read new tags on the incoming streams
-  vector<baseStructureParser*> parsers;
+  vector<baseStructureParser<FILE>*> parsers;
   // For each parser a flag indicating whether the parser is active (true) or has 
   // reached the end of its stream's contents (false)
   std::vector<bool> active;
@@ -161,7 +162,7 @@ class MergeState {
   // Records whether a universal tag was read on each given parser
   vector<bool> readUniversalTag;
   
-  MergeState(const vector<baseStructureParser*>& parsers
+  MergeState(const vector<baseStructureParser<FILE>*>& parsers
              #ifdef VERBOSE
              , graph& g, anchor incomingA, anchor outgoingA
              #endif

@@ -1,0 +1,23 @@
+init BE process... [PARENT_PORT: 53176] [PARENT_RANK: 0] [BE_RANK: 2333] [PARAM: 3]  
+DBG INIT... MRNET_MERGE_EXEC 
+Backend host:rank localhost:2333 connecting to parent host:port:rank localhost:53176:0
+[send aux stream#send()] 
+[PUSH PACKETS] 
+[PUSH PACKETS] 
+[send aux opackets#send 0x14051c0 ] 
+[send aux opackets#send To Parent 0x14051c0 ] 
+[PUSH PACKETS] 
+[PUSH PACKETS] 
+Init BE pid : 8213 : values :BE: Sending wave 0 ... data : [sight numProperties="104" name0="argc" val0="3" name1="argv_0" val1=".&#47;4.AttributeAnnotationFil   num bytes : 100 
+BE: Sending wave wait send Auc..... 
+[send aux stream#send()] 
+[PUSH PACKETS] 
+[PUSH PACKETS] 
+[MRNet FILTER METHOD started.. PID : 8213 ]
+[MRNet FILTER - case BE node.. PID : 8213 ]
+[LOAD METHOD of Input Producer...pid : 8213 size : 1 ] 
+[PRINT METHOD !!...pid : 8213 arr:size : 100 ] 
+[sight numProperties="104" name0="argc" val0="3" name1="argv_0" val1=".&#47;4.AttributeAnnotationFil
+[LOAD METHOD Done !!...pid : 8213  ] 
+BE: Sending wave Done..... 
+Segmentation fault (core dumped)

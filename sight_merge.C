@@ -20,7 +20,7 @@ namespace merge {
 #define ITER_ACTION(text) 
 #endif
 
-MergeState::MergeState(const vector<baseStructureParser*>& parsers
+MergeState::MergeState(const vector<baseStructureParser<FILE>*>& parsers
                        #ifdef VERBOSE
                        , graph& g, anchor incomingA, anchor outgoingA
                        #endif
@@ -69,7 +69,7 @@ MergeState::MergeState(const MergeState& that,
   variantStackDepth = that.variantStackDepth;
   multGroupID = that.multGroupID;
   
-  collectGroupVectorIdx<baseStructureParser*>(that.parsers, gs.parserIndexes, parsers);
+  collectGroupVectorIdx<baseStructureParser<FILE>*>(that.parsers, gs.parserIndexes, parsers);
   collectGroupVectorIdx<pair<properties::tagType, const properties*> >(that.nextTag, gs.parserIndexes, nextTag);
 
   // Create outStreamRecords for this group
@@ -367,7 +367,7 @@ void MergeState::readNextTag() {
   
   // Read the next tag on each parser, updating nextTag and tag2stream
   int parserIdx=0;
-  for(vector<baseStructureParser*>::iterator p=parsers.begin(); p!=parsers.end(); p++, parserIdx++) {
+  for(vector<baseStructureParser<FILE>*>::iterator p=parsers.begin(); p!=parsers.end(); p++, parserIdx++) {
     /*#ifdef VERBOSE
     dbg << "readyForTag["<<parserIdx<<"]="<<readyForTag[parserIdx]<<", activeParser["<<parserIdx<<"]="<<activeParser[parserIdx]<<endl;
     #endif*/

@@ -4,7 +4,7 @@ EXE := .exe
 endif
 
 sight_H := ../*.h ../*/*.h ../widgets/*/*.h
-TESTERS = 0.Demo${EXE} \
+#TESTERS = 0.Demo${EXE} \
           1.StructuredFormatting${EXE} \
           2.ConditionalFormatting${EXE} \
           3.Navigation${EXE} \
@@ -17,7 +17,9 @@ TESTERS = 0.Demo${EXE} \
           10.SpringModules${EXE} \
           11.ExternTraceProcess${EXE} 
           
-PTHREAD_TESTERS = pthreadMutexEx${EXE} pthreadCondEx${EXE} pthreadThreadsEx${EXE} \
+TESTERS = 8.Modules${EXE} 
+
+PTHREAD_TESTERS = #pthreadMutexEx${EXE} pthreadCondEx${EXE} pthreadThreadsEx${EXE} \
                   pthreadArrayLoops${EXE} dotprodPthreads${EXE} pthreadFib${EXE} #\
                   pthreadBug1${EXE} pthreadBug2${EXE} pthreadBug3${EXE} \
                   pthreadBug4${EXE} pthreadBug5${EXE} pthreadBug6${EXE}

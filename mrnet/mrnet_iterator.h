@@ -63,7 +63,7 @@ namespace mrnstreaming {
         std::map<Rank, atomic_cond_t*> inputSignals ;
         std::map<Rank, std::vector<DataPckt>*> bufferData;
         pthread_t* thread1 ;
-        std::vector<sight::baseStructureParser*> iterators;
+        std::vector<sight::baseStructureParser<FILE>*> iterators;
 
         AtomicSync* synchronizer ;
         atomic_mutex_t* inQueueMutex;

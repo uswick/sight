@@ -38,10 +38,10 @@ void SightStreamAggregator(std::vector< PacketPtr > &packets_in,
         PacketPtr & /* params */,
         const TopologyLocalInfo &inf) {
 
-#ifdef DEBUG_ON
+//#ifdef DEBUG_ON
     fprintf(stdout, "[MRNet FILTER METHOD just started.. PID : %d ]\n", getpid());
     fflush(stdout);
-#endif
+//#endif
     Network *net = const_cast< Network * >( inf.get_Network() );
     PacketPtr first_packet = packets_in[0];
     int stream_id = first_packet->get_StreamId();
