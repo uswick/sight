@@ -45,7 +45,8 @@ void MRNetThread::init(std::set<Rank> ranks) {
             inputSignals[r] = signal;
             bufferData[r] = inputQueue;
             //each iterator owns a input queue
-            MRNetParser *it = new MRNetParser(*bufferData[r], inputSignals[r], inQueueMutex, synchronizer);
+            //MRNetParser *it = new MRNetParser(*bufferData[r], inputSignals[r], inQueueMutex, synchronizer);
+            baseStructureParser<FILE> *it = new MRNetParser(*bufferData[r], inputSignals[r], inQueueMutex, synchronizer);
             iterators.push_back(it);
         }
 

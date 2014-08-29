@@ -3218,7 +3218,15 @@ AbortHandlerInstantiator::AbortHandlerInstantiator() :
 { 
 }
 
+AbortHandlerInstantiator::~AbortHandlerInstantiator()
+{
+  //printf("Abort HANDLE DESTRUCT....\n");
+    //    fflush(stdout);
+}
+
+
 void AbortHandlerInstantiator::init() {
+  //return;
   ExitHandlers       = new map<std::string, ExitHandler>();
   KillSignalHandlers = new map<std::string, KillSignalHandler>();
   
@@ -3262,6 +3270,8 @@ void AbortHandlerInstantiator::overrideSignal(int signum, struct sigaction& new_
 
 // Invoked when the application has called exit()
 void AbortHandlerInstantiator::appExited() {
+  printf("APP exited SIGHT....\n");
+        fflush(stdout);
   // Only do exit processing if Sight has not already been destroyed
   if(sightObj::SightDestroyed) return;
   
@@ -3276,6 +3286,8 @@ void AbortHandlerInstantiator::appExited() {
 
 // Invoked when the application is sent a kill signal
 void AbortHandlerInstantiator::killSignal(int signum) {
+  printf("KILLED\n");
+        fflush(stdout);
   // Only do exit processing if Sight has not already been destroyed
   if(sightObj::SightDestroyed) return;
   

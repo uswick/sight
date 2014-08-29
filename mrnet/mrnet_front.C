@@ -93,8 +93,7 @@ int main(int argc, char **argv)
     const char * dummy_argv=NULL;
 
     FILE * structureFile;
-    //structureFile = fopen ("/home/usw/Install/sight/sight/sight/mrnet/bin/mrnet.Attrib/structure","ab+");
-    structureFile = fopen ("/u/uswickra/sight.usw.git/sight/mrnet/bin/mrnet.out/structure","ab+");
+    structureFile = fopen ("/home/usw/Install/sight/sight/sight_new/sight/mrnet/bin/mrnet.out/structure","ab+");
     if (structureFile!=NULL) {
 #ifdef DEBUG_ON
         printf("OUT File opened.. \n");

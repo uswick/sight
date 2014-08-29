@@ -1796,6 +1796,8 @@ class AbortHandlerInstantiator : public sight::common::LoadTimeRegistry {
 
   AbortHandlerInstantiator();
   
+  ~AbortHandlerInstantiator();
+  
   // Called exactly once for each class that derives from LoadTimeRegistry to initialize its static data structures.
   static void init();
   
