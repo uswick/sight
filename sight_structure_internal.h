@@ -1398,6 +1398,7 @@ public:
   std::list<block*> blocks;
   
   bool initialized;
+  bool no_destruct ;
   
 public:
   // Construct an ostream which tees output to the supplied

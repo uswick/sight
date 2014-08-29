@@ -2343,7 +2343,7 @@ int mrnBuf::sync() {
  ***** dbgStream *****
  *********************/
 
-dbgStream::dbgStream() : common::dbgStream(&defaultFileBuf), sightObj(this), initialized(false)
+dbgStream::dbgStream() : common::dbgStream(&defaultFileBuf), sightObj(this), initialized(false), no_destruct(false)
 {
   dbgFile = NULL;
   //buf = new dbgBuf(cout.rdbuf());
@@ -2354,13 +2354,13 @@ dbgStream::dbgStream() : common::dbgStream(&defaultFileBuf), sightObj(this), ini
 }
 
 dbgStream::dbgStream(properties* props, string title, string workDir, string imgDir, std::string tmpDir)
-  : common::dbgStream(&defaultFileBuf), sightObj(this)
+  : common::dbgStream(&defaultFileBuf), sightObj(this), no_destruct(false)
 {
   init(props, title, workDir, imgDir, tmpDir);
 }
 
 dbgStream::dbgStream(mrnBuf* mrnBuff, properties *props, string title, string workDir, string imgDir, std::string tmpDir)
-                : common::dbgStream(&defaultFileBuf), sightObj(this) {
+                : common::dbgStream(&defaultFileBuf), sightObj(this), no_destruct(false) {
     dbgFile = NULL;
     this->title   = title;
     this->workDir = workDir;
@@ -2388,7 +2388,7 @@ dbgStream::dbgStream(mrnBuf* mrnBuff, properties *props, string title, string wo
 }
 
 dbgStream::dbgStream(properties* props, string title, string workDir, string imgDir, std::string tmpDir, bool no_init)
-: common::dbgStream(&defaultFileBuf), sightObj(this)
+: common::dbgStream(&defaultFileBuf), sightObj(this), no_destruct(false)
 {
     if(!no_init)
         init(props, title, workDir, imgDir, tmpDir);
@@ -2490,14 +2490,17 @@ void dbgStream::destroy() {
 }
 
 dbgStream::~dbgStream() {
-  // If Sight has already been destroyed, skip out of the destructor
+  //special flag  indicates that proper destruction is handled elsewhere
+  if (no_destruct)
+        return;
+    // If Sight has already been destroyed, skip out of the destructor
   if(SightDestroyed) return;
 
   assert(!destroyed);
   
   if (!initialized)
     return;
-  
+
   // If this is the main thread, finalize it before it terminates
   if(isMainThreadDbg(this))
     SightThreadFinalize();
@@ -2687,10 +2690,21 @@ std::string dbgStream::tagStr(const properties& props) {
  ************************/
 
  MRNetostream::~MRNetostream()  {
+            assert(!destroyed);
+            if (!initialized)
+                return;
+
+            // If this is the main thread, finalize it before it terminates
+            if(isMainThreadDbg(this))
+                SightThreadFinalize();
+
+            // Emit the exit tag for this dbgStream
+            sightObj::exitTag(false);
+
             mrnBuf* mrnBuffer = (mrnBuf*)this->rdbuf();
             mrnBuffer->setEofStream(true);
-//            this->transferData(dummy, 1, true);
-            //todo free dummy char str
+            //let other base destructors know that all destruciton is done
+            no_destruct = true;
  }
 
 
