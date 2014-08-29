@@ -1407,7 +1407,7 @@ public:
   dbgStream(mrnBuf* mrnBuff, properties *props, string title, string workDir, string imgDir, std::string tmpDir) ;
   dbgStream(properties* props, std::string title, std::string workDir, std::string imgDir, std::string tmpDir, bool no_init);
   void init(properties* props, std::string title, std::string workDir, std::string imgDir, std::string tmpDir);
-  ~dbgStream();
+  virtual ~dbgStream();
 
   // Directly calls the destructor of this object. This is necessary because when an application crashes
   // Sight must clean up its state by calling the destructors of all the currently-active sightObjs. Since 
