@@ -18,10 +18,10 @@ SIGHT_CFLAGS = -g -fPIC -I${ROOT_PATH} -I${ROOT_PATH}/attributes -I${ROOT_PATH}/
                 -I${ROOT_PATH}/widgets/papi/include \
                 -I${ROOT_PATH}/widgets/libmsr/include \
                 -I${ROOT_PATH}/mrnet \
-		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/include  \
-		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/xplat/include \
-		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/build/x86_64-unknown-linux-gnu \
-		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/external/boost/include \
+		-I/home/usw/Install/MRnet/mrnet_4.1.0/include  \
+		-I/home/usw/Install/MRnet/mrnet_4.1.0/xplat/include \
+		-I/home/usw/Install/MRnet/mrnet_4.1.0/build/x86_64-unknown-linux-gnu \
+		-I/home/usw/Install/MRnet/mrnet_4.1.0/external/boost/include \
                 -I${ROOT_PATH}/mrnet 
 
 SIGHT_LINKFLAGS = \
@@ -39,10 +39,10 @@ SIGHT_LINKFLAGS = \
 
 
 MRNET_CXXFLAGS = -g -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS  \
-		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/include \
-		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/xplat/include \
-		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/build/x86_64-unknown-linux-gnu \
-		-I/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/external/boost/include \
+		-I/home/usw/Install/MRnet/mrnet_4.1.0/include \
+		-I/home/usw/Install/MRnet/mrnet_4.1.0/xplat/include \
+		-I/home/usw/Install/MRnet/mrnet_4.1.0/build/x86_64-unknown-linux-gnu \
+		-I/home/usw/Install/MRnet/mrnet_4.1.0/external/boost/include \
                 -I${ROOT_PATH}/mrnet \
                     -Dos_linux \
                     -Wall -Wno-system-headers -Wfloat-equal -Wconversion -Wshadow -Wpointer-arith \
@@ -52,7 +52,7 @@ LDFLAGS = -Wl,-E
 
 MRNET_SOFLAGS = -fPIC -shared -rdynamic
 
-MRNET_LIBS = -L/nfs/deep-thought/home/users/uswickra/sight_test/mrnet_4.1.0/build/x86_64-unknown-linux-gnu/lib -lmrnet -lxplat -lm -lpthread -ldl
+MRNET_LIBS = -L/home/usw/Install/MRnet/mrnet_4.1.0/build/x86_64-unknown-linux-gnu/lib -lmrnet -lxplat -lm -lpthread -ldl
 
 RAPL_ENABLED = 1
 ifeq (${RAPL_ENABLED}, 1)

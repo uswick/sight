@@ -298,7 +298,8 @@ void SightInit_internal(int argc, char** argv, string title, string workDir, boo
   /*if(mainThread) {
     globalComparisonIDs.push_back(make_pair("pthread", std::string(txt()<<pthread_self())));
   }*/
-  
+  //initialize Abort object to register exit handlers
+  AbortHandlerInstantiator defaultAbortHandlerInstance;
   // Record whether this is the main thread
   isMainThread = mainThread;
   
@@ -3353,7 +3354,7 @@ std::string AbortHandlerInstantiator::str() {
 // Initial instance of AbortHandlerInstantiator that ensures that the proper 
 // exit/signal handlers are set up. Individual widgets may set up their own 
 // instances as well.
-AbortHandlerInstantiator defaultAbortHandlerInstance;
+//AbortHandlerInstantiator defaultAbortHandlerInstance;
 
 }; // namespace structure
 }; // namespace sight

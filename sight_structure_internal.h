@@ -1819,7 +1819,7 @@ class AbortHandlerInstantiator : public sight::common::LoadTimeRegistry {
 // Initial instance of AbortHandlerInstantiator that ensures that the proper 
 // exit/signal handlers are set up. Individual widgets may set up their own 
 // instances as well.
-extern AbortHandlerInstantiator defaultAbortHandlerInstance;
+//extern AbortHandlerInstantiator defaultAbortHandlerInstance;
 
 
 } // namespace structure
