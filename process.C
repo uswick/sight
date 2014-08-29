@@ -23,6 +23,7 @@ namespace sight {
 
 template<typename streamT>
 baseStructureParser<streamT>::baseStructureParser(int bufSize) : bufSize(bufSize) {
+  init(NULL);
 }
 
 template<typename streamT>
